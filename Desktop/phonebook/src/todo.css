@@ -25,7 +25,11 @@
   margin-bottom: 20px;
 }
 
-.logout-button, .profile-button, .new-task-button {
+.logout-button,
+.profile-button,
+.new-task-button,
+.delete-button,
+.edit-button { /* Added class for edit button */
   padding: 10px 20px;
   font-size: 1rem;
   cursor: pointer;
@@ -36,7 +40,11 @@
   transition: background-color 0.3s ease;
 }
 
-.logout-button:hover, .profile-button:hover, .new-task-button:hover {
+.logout-button:hover,
+.profile-button:hover,
+.new-task-button:hover,
+.delete-button:hover,
+.edit-button:hover { /* Updated to include hover states for edit button */
   background-color: #0056b3;
 }
 
@@ -55,21 +63,34 @@
 .task-header {
   display: flex;
   justify-content: space-between;
+  align-items: center; /* Align items for better layout */
 }
 
-.delete-button {
+.delete-button,
+.edit-button { /* Specific styles for buttons */
   padding: 5px 10px;
   font-size: 0.8rem;
   cursor: pointer;
-  background-color: #dc3545;
-  color: white;
-  border: none;
   border-radius: 5px;
   transition: background-color 0.3s ease;
 }
 
+.delete-button {
+  background-color: #dc3545;
+  color: white;
+}
+
+.edit-button {
+  background-color: #ffc107; /* Yellow background for edit button */
+  color: white;
+}
+
 .delete-button:hover {
   background-color: #c82333;
+}
+
+.edit-button:hover { /* Hover effect for edit button */
+  background-color: #e0a800; /* Darker yellow on hover */
 }
 
 /* Calendar Styles */

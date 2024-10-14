@@ -1,13 +1,27 @@
-import React, { useState, useRef, useEffect } from 'react';
-import ReminderModal from './ReminderModal';
-import { Button, TextField, Select, MenuItem, InputLabel, FormControl, Container, CssBaseline, Box, Typography, Paper, AppBar, Toolbar, IconButton } from '@mui/material';
+import React, { useState, useEffect, useRef } from 'react';
+import {
+  Button,
+  TextField,
+  Select,
+  MenuItem,
+  InputLabel,
+  FormControl,
+  Container,
+  CssBaseline,
+  Box,
+  Typography,
+  Paper,
+  AppBar,
+  Toolbar,
+  IconButton,
+} from '@mui/material';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import SearchIcon from '@mui/icons-material/Search';
 import DeleteIcon from '@mui/icons-material/Delete';
 import AddIcon from '@mui/icons-material/Add';
+import EditIcon from '@mui/icons-material/Edit';
+import ReminderModal from './ReminderModal';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios'; // Ensure axios is installed with npm install axios
-import './todo.css';
 
 const darkTheme = createTheme({
   palette: {
@@ -28,54 +42,113 @@ function ToDoList({ onLogout }) {
   const taskDateTime = useRef('');
   const taskPriority = useRef('Medium');
 
-  // Fetch tasks from the JSON server
-  const fetchTasks = async () => {
-    try {
-      const response = await axios.get('http://localhost:3000/tasks');
-      setTasks(response.data);
-    } catch (error) {
-      console.error('Error fetching tasks:', error);
+  // Load tasks from local storage or JSON server
+  const loadTasks = async () => {
+    const localStorageTasks = JSON.parse(localStorage.getItem('tasks')) || [];
+
+    if (localStorageTasks.length === 0) {
+      // Fetch from JSON server
+      const response = await fetch('http://localhost:3001/tasks');
+      const tasksFromServer = await response.json();
+      localStorage.setItem('tasks', JSON.stringify(tasksFromServer));
+      setTasks(tasksFromServer);
+    } else {
+      setTasks(localStorageTasks);
     }
   };
 
-  useEffect(() => {
-    fetchTasks();
-  }, []);
+  // Add a new task
+  const addTask = (newTask) => {
+    const updatedTasks = [...tasks, newTask];
+    setTasks(updatedTasks);
+    localStorage.setItem('tasks', JSON.stringify(updatedTasks));
 
-  // Create a new task and save it to the JSON server
-  const createTask = async () => {
+    // Send to server
+    fetch('http://localhost:3001/tasks', {
+      method: 'POST',
+      body: JSON.stringify(newTask),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+  };
+
+  // Edit a task
+  const editTask = (taskToEdit) => {
+    taskTitle.current = { value: taskToEdit.title }; // Initialize ref with an object
+    taskSummary.current = { value: taskToEdit.summary };
+    taskDateTime.current = { value: taskToEdit.dateTime };
+    taskPriority.current.value = taskToEdit.priority; // Directly assign value
+
+    setOpened(true); // Open the task creation modal for editing
+    setCurrentTask(taskToEdit);
+  };
+
+  // Save edited task
+  const saveTask = (updatedTask) => {
+    const updatedTasks = tasks.map((task) =>
+      task.id === updatedTask.id ? updatedTask : task
+    );
+    setTasks(updatedTasks);
+    localStorage.setItem('tasks', JSON.stringify(updatedTasks));
+
+    // Update on server
+    fetch(`http://localhost:3001/tasks/${updatedTask.id}`, {
+      method: 'PUT',
+      body: JSON.stringify(updatedTask),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+  };
+
+  // Handle task creation and update
+  const handleCreateTask = () => {
     const newTask = {
-      id: Date.now(),
+      id: currentTask ? currentTask.id : Date.now(),
       title: taskTitle.current.value,
       summary: taskSummary.current.value,
       dateTime: taskDateTime.current.value,
       priority: taskPriority.current.value,
     };
 
-    try {
-      await axios.post('http://localhost:3000/tasks', newTask);
-      setTasks([...tasks, newTask]);
-      setOpened(false);
-    } catch (error) {
-      console.error('Error creating task:', error);
+    if (currentTask) {
+      // If editing, save the updated task
+      saveTask(newTask);
+    } else {
+      // If creating a new task
+      addTask(newTask);
     }
+
+    setOpened(false);
+    setCurrentTask(null);
   };
 
-  // Delete a task and remove it from the JSON server
-  const deleteTask = async (taskId) => {
-    try {
-      await axios.delete(`http://localhost:3000/tasks/${taskId}`);
-      setTasks(tasks.filter(task => task.id !== taskId));
-    } catch (error) {
-      console.error('Error deleting task:', error);
-    }
+  // Delete a task
+  const deleteTask = (taskId) => {
+    const updatedTasks = tasks.filter((task) => task.id !== taskId);
+    setTasks(updatedTasks);
+    localStorage.setItem('tasks', JSON.stringify(updatedTasks));
+
+    // Remove from server
+    fetch(`http://localhost:3001/tasks/${taskId}`, {
+      method: 'DELETE',
+    });
   };
 
-  const filteredTasks = tasks.filter(task =>
-    task.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    task.summary.toLowerCase().includes(searchTerm.toLowerCase())
+  // Filter tasks based on search term
+  const filteredTasks = tasks.filter(
+    (task) =>
+      task.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      task.summary.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  // Load tasks on component mount
+  useEffect(() => {
+    loadTasks();
+  }, []);
+
+  // Reminder checking logic (simplified for illustration)
   useEffect(() => {
     const interval = setInterval(() => {
       const now = new Date().toISOString().slice(0, 16);
@@ -89,6 +162,7 @@ function ToDoList({ onLogout }) {
     return () => clearInterval(interval);
   }, [tasks]);
 
+  // Close reminder modal
   const closeReminderModal = () => {
     setIsReminderOpen(false);
     setCurrentTask(null);
@@ -119,7 +193,7 @@ function ToDoList({ onLogout }) {
           />
           {opened && (
             <Paper elevation={3} sx={{ padding: 2, margin: 2 }}>
-              <Typography component="h2" variant="h5">New Task</Typography>
+              <Typography component="h2" variant="h5">{currentTask ? 'Edit Task' : 'New Task'}</Typography>
               <TextField inputRef={taskTitle} label="Title" fullWidth margin="normal" required />
               <TextField inputRef={taskSummary} label="Summary" fullWidth margin="normal" />
               <TextField inputRef={taskDateTime} label="Date and Time" type="datetime-local" fullWidth margin="normal" required InputLabelProps={{ shrink: true }} />
@@ -133,7 +207,7 @@ function ToDoList({ onLogout }) {
               </FormControl>
               <Box display="flex" justifyContent="space-between">
                 <Button variant="contained" color="secondary" onClick={() => setOpened(false)}>Cancel</Button>
-                <Button variant="contained" color="primary" onClick={createTask}>Create Task</Button>
+                <Button variant="contained" color="primary" onClick={handleCreateTask}>Save Task</Button>
               </Box>
             </Paper>
           )}
@@ -144,7 +218,10 @@ function ToDoList({ onLogout }) {
                 <Paper key={task.id} elevation={3} sx={{ padding: 2, margin: 2 }}>
                   <Box display="flex" justifyContent="space-between">
                     <Typography variant="h6">{task.title}</Typography>
-                    <IconButton onClick={() => deleteTask(task.id)}><DeleteIcon /></IconButton>
+                    <Box>
+                      <IconButton onClick={() => editTask(task)} className="edit-button"><EditIcon /></IconButton>
+                      <IconButton onClick={() => deleteTask(task.id)}><DeleteIcon /></IconButton>
+                    </Box>
                   </Box>
                   <Typography>{task.summary || 'No summary was provided for this task'}</Typography>
                   <Typography>Reminder set for: {task.dateTime}</Typography>

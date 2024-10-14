@@ -14,7 +14,7 @@ function EditUser() {
 
   useEffect(() => {
     // Fetch the user details from the server
-    fetch(`http://localhost:3000/users/${id}`)
+    fetch(`http://localhost:3001/users/${id}`)
       .then(response => response.json())
       .then(data => setUser(data))
       .catch(error => console.error('Error fetching user:', error));
@@ -27,7 +27,7 @@ function EditUser() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch(`http://localhost:3000/users/${id}`, {
+    fetch(`http://localhost:3001/users/${id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(user)

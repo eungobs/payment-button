@@ -1,70 +1,102 @@
-# Getting Started with Create React App
+Phonebook Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Project Overview
+The Phonebook Application is a personal contact management system designed to help users manage their contacts efficiently. It allows users to add, edit, delete, and search through their contacts. The app features user authentication to secure access to personal data, and all contact information is stored locally using JSON in the browser's local storage.
 
-## Available Scripts
+This project is located in the following repository: GitHub Repo under the Desktop folder.
 
-In the project directory, you can run:
+Features
+Pages
+Login Page:
 
-### `npm start`
+Users can log in using their registered email and password.
+Registration Page:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+New users can create an account by providing a username and password.
+Home Page:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Displays the user's contacts, where they can add, edit, delete, and search for contacts.
+Phonebook Features
+Search Function:
 
-### `npm test`
+Users can search for contacts by entering a keyword.
+Add Contact:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Add new contacts with a name, phone number, and priority level (High, Medium, Low).
+Delete Contact:
 
-### `npm run build`
+Delete existing contacts from the phonebook.
+Edit Contact:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Update contact information including name, phone number, and priority.
+Priority Colors:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Contacts are visually categorized by their priority:
+Red for High priority
+Yellow for Medium priority
+Green for Low priority
+General Features
+CRUD Operations:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Users can create, read, update, and delete contact information.
+Local Storage (JSON):
 
-### `npm run eject`
+Contact data is stored using JSON in the browser's local storage, ensuring persistence across sessions.
+Responsive Design:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+The application is fully responsive and works seamlessly across different devices.
+User Authentication:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Only registered users can access their personal contacts, providing a secure environment for data management.
+Material UI Integration:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+The app uses Material UI for a modern and responsive user interface.
+How to Use
+Landing Page:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+On the landing page, you will see three options: Register, Login, and Logout.
+Register:
 
-## Learn More
+Click on the Register button to create a new account.
+Enter a username and password to sign up.
+Login:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Once registered, log in with your credentials.
+Home Page:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+After logging in, you will be taken to the Home Page where you can:
+Add Contacts by providing a name, phone number, and selecting the priority level.
+Edit Contacts by updating contact details.
+Delete Contacts if they are no longer needed.
+Search Contacts using the search bar to quickly find specific entries.
+Technologies Used
+React.js:
+A JavaScript library for building dynamic user interfaces.
 
-### Code Splitting
+JSON (Local Storage):
+Used to store user and contact information locally on the browser.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Material UI:
+Integrated to give the app a modern look and responsive feel. Learn more about Material UI.
 
-### Analyzing the Bundle Size
+JavaScript & CSS:
+JavaScript handles the application logic, while CSS ensures the app is styled and responsive.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Installation and Setup
+Clone the repository:
+git clone https://github.com/eungobs/my-projects.git
+Navigate to the project folder under Desktop:
 
-### Making a Progressive Web App
+cd my-projects/Desktop
+Install dependencies:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+npm install
+Start the application:
+npm start
+Open your browser and go to http://localhost:3000.
 
-### Advanced Configuration
+Author
+Elizabeth Eunice Ndzukule
+This Phonebook Application was developed to provide a simple, secure, and effective way to manage personal contacts.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+For more details, check out the project in the GitHub repository.

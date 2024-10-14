@@ -10,14 +10,14 @@ function UserList() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch('http://localhost:3000/users')
+    fetch('http://localhost:3001/users')
       .then(response => response.json())
       .then(data => setUsers(data))
       .catch(error => console.error('Error fetching users:', error));
   }, []);
 
   const deleteUser = (userId) => {
-    fetch(`http://localhost:3000/users/${userId}`, { method: 'DELETE' })
+    fetch(`http://localhost:3001/users/${userId}`, { method: 'DELETE' })
       .then(() => setUsers(users.filter(user => user.id !== userId)))
       .catch(error => console.error('Error deleting user:', error));
   };

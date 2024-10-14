@@ -43,13 +43,13 @@ function Register() {
 
     setLoading(true);
     try {
-      const response = await fetch(`http://localhost:3000/users?email=${userData.email}`);
+      const response = await fetch(`http://localhost:3001/users?email=${userData.email}`);
       const existingUsers = await response.json();
 
       if (existingUsers.length > 0) {
         setError('You already have an account.');
       } else {
-        await fetch('http://localhost:3000/users', {
+        await fetch('http://localhost:3001/users', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
