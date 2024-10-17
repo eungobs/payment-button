@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from '@mui/material'; // Removed CircularProgress
+import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import './logout.css';
 

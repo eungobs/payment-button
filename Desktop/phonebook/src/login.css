@@ -95,7 +95,6 @@ button {
 button:hover {
   background-color: #0056b3;
 }
-
 /* Media Queries for Responsiveness */
 @media (max-width: 1200px) {
   .diary-text {
@@ -127,5 +126,101 @@ button:hover {
   button {
     padding: 0.5rem;
     font-size: 0.7rem;
+  }
+}
+
+/* For small screens: 414px */
+@media (max-width: 414px) {
+  .diary-text {
+    font-size: 1.25rem;
+  }
+
+  button {
+    padding: 0.5rem;
+    font-size: 0.7rem;
+  }
+}
+
+/* For small screens: 320px */
+@media (max-width: 320px) {
+  .diary-text {
+    font-size: 1rem;
+  }
+
+  button {
+    padding: 0.4rem;
+    font-size: 0.6rem;
+  }
+}
+
+/* For very small screens: 290px */
+@media (max-width: 290px) {
+  .diary-text {
+    font-size: 0.9rem;
+  }
+
+  button {
+    padding: 0.3rem;
+    font-size: 0.6rem;
+  }
+}
+
+/* For screens: 440px */
+@media (max-width: 440px) {
+  .diary-text {
+    font-size: 1.4rem;
+  }
+
+  button {
+    padding: 0.5rem;
+    font-size: 0.7rem;
+  }
+}
+
+/* For screens: 430px */
+@media (max-width: 430px) {
+  .diary-text {
+    font-size: 1.35rem;
+  }
+
+  button {
+    padding: 0.5rem;
+    font-size: 0.7rem;
+  }
+}
+
+/* For screens: 560px */
+@media (max-width: 560px) {
+  .diary-text {
+    font-size: 1.6rem;
+  }
+
+  button {
+    padding: 0.6rem;
+    font-size: 0.75rem;
+  }
+}
+
+/* For screens: 520px */
+@media (max-width: 520px) {
+  .diary-text {
+    font-size: 1.55rem;
+  }
+
+  button {
+    padding: 0.6rem;
+    font-size: 0.75rem;
+  }
+}
+
+/* For very small screens: 319px */
+@media (max-width: 319px) {
+  .diary-text {
+    font-size: 1rem;
+  }
+
+  button {
+    padding: 0.4rem;
+    font-size: 0.6rem;
   }
 }

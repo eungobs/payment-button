@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@babel/core": "^7.25.8",
     "@emotion/react": "^11.13.0",
     "@emotion/styled": "^11.13.0",
     "@mui/icons-material": "^5.16.5",
@@ -12,13 +13,17 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.7.2",
+    "babel-loader": "^8.4.1",
     "json-server": "^1.0.0-beta.1",
     "phonebook": "file:",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.25.1",
     "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "webpack": "^5.95.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^3.11.3"
   },
   "scripts": {
     "start": "react-scripts start",
