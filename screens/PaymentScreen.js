@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Button, StyleSheet, Alert, TextInput, Image, Text } from 'react-native';
+import { View, Button, StyleSheet, Alert, TextInput, Image, Text, ScrollView } from 'react-native';
 import { Paystack } from 'react-native-paystack';
 
 const PAYSTACK_PUBLIC_KEY = 'pk_test_52e1aaefe05121d5386a4a072cce923a1f41b7a1';
@@ -39,7 +39,7 @@ export default function PaymentScreen({ route }) {
   };
 
   return (
-    <View style={styles.container}>
+    <ScrollView contentContainerStyle={styles.scrollContainer}>
       <Image source={{ uri: product.image }} style={styles.image} />
       <Text style={styles.description}>{product.description}</Text>
       <Text style={styles.price}>Price: {product.price}</Text>
@@ -78,14 +78,14 @@ export default function PaymentScreen({ route }) {
         keyboardType="number-pad"
         secureTextEntry
       />
-      <Button title="Pay Now" onPress={handlePay} />
-    </View>
+      <Button title="Pay Now" onPress={handlePay} color="#FFD700" />
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
+  scrollContainer: {
+    flexGrow: 1,
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
@@ -114,5 +114,11 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     paddingHorizontal: 10,
     width: '80%',
+  },
+  button: {
+    backgroundColor: '#FFD700',
+    borderRadius: 5,
+    padding: 10,
+    fontWeight: 'bold',
   },
 });
