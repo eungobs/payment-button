@@ -1,0 +1,249 @@
+/* src/Personnel.css */
+.personnel {
+  position: relative;
+  overflow: hidden;
+  padding: 20px;
+  text-align: center;
+  height: 100vh; /* Adjust to fit your layout needs */
+  background-color: grey; /* Fallback background color */
+}
+
+.background-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  color: #ffffff; /* Adjust text color for better visibility */
+}
+
+.personnel h2 {
+  margin-bottom: 20px;
+}
+
+.personnel .personnel-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap; /* Allow items to wrap to the next line */
+  justify-content: center; /* Center items horizontally */
+  align-items: center;
+}
+
+.personnel .person {
+  margin: 10px;
+  padding: 10px;
+  width: 100%;
+  max-width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+/* Green background for those who moved to other branches */
+.person.moved {
+  background-color: #98FB98;
+}
+
+/* Red background for those who resigned/terminated */
+.person.terminated {
+  background-color: #FFB6C1;
+}
+
+.personnel button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Media Queries for Responsiveness */
+
+/* Extra Small Devices (320px and down) */
+@media only screen and (max-width: 320px) {
+  .personnel {
+    padding: 10px;
+  }
+
+  .personnel h2 {
+    font-size: 1.5em;
+  }
+
+  .personnel .person {
+    width: 90%;
+    max-width: none;
+  }
+
+  .personnel button {
+    padding: 8px 16px;
+  }
+}
+
+/* Small Devices (321px to 420px) */
+@media only screen and (min-width: 321px) and (max-width: 420px) {
+  .personnel {
+    padding: 15px;
+  }
+
+  .personnel h2 {
+    font-size: 1.8em;
+  }
+
+  .personnel .person {
+    width: 85%;
+    max-width: none;
+  }
+
+  .personnel button {
+    padding: 9px 18px;
+  }
+}
+
+/* Small Devices (421px to 480px) */
+@media only screen and (min-width: 421px) and (max-width: 480px) {
+  .personnel {
+    padding: 15px;
+  }
+
+  .personnel h2 {
+    font-size: 1.8em;
+  }
+
+  .personnel .person {
+    width: 85%;
+    max-width: none;
+  }
+
+  .personnel button {
+    padding: 10px 20px;
+  }
+}
+
+/* Small Devices (481px to 500px) */
+@media only screen and (min-width: 481px) and (max-width: 500px) {
+  .personnel {
+    padding: 20px;
+  }
+
+  .personnel h2 {
+    font-size: 1.9em;
+  }
+
+  .personnel .person {
+    width: 80%;
+    max-width: none;
+  }
+
+  .personnel button {
+    padding: 10px 20px;
+  }
+}
+
+/* Small Devices (501px to 540px) */
+@media only screen and (min-width: 501px) and (max-width: 540px) {
+  .personnel {
+    padding: 20px;
+  }
+
+  .personnel h2 {
+    font-size: 2em;
+  }
+
+  .personnel .person {
+    width: 80%;
+    max-width: none;
+  }
+
+  .personnel button {
+    padding: 10px 20px;
+  }
+}
+
+/* Small Devices (541px to 600px) */
+@media only screen and (min-width: 541px) and (max-width: 600px) {
+  .personnel {
+    padding: 20px;
+  }
+
+  .personnel h2 {
+    font-size: 2em;
+  }
+
+  .personnel .person {
+    width: 80%;
+    max-width: none;
+  }
+
+  .personnel button {
+    padding: 10px 20px;
+  }
+}
+
+/* Medium Devices (Tablets, 601px to 900px) */
+@media only screen and (min-width: 601px) and (max-width: 900px) {
+  .personnel {
+    padding: 20px;
+  }
+
+  .personnel h2 {
+    font-size: 2.2em;
+  }
+
+  .personnel .person {
+    width: 80%;
+    max-width: none;
+  }
+
+  .personnel button {
+    padding: 10px 20px;
+  }
+}
+
+/* Large Devices (Desktops, 901px to 1200px) */
+@media only screen and (min-width: 901px) and (max-width: 1200px) {
+  .personnel {
+    padding: 20px;
+  }
+
+  .personnel h2 {
+    font-size: 2.5em;
+  }
+
+  .personnel .person {
+    width: 80%;
+    max-width: none;
+  }
+
+  .personnel button {
+    padding: 10px 20px;
+  }
+}
+
+/* Extra Large Devices (Large Desktops, 1201px and up) */
+@media only screen and (min-width: 1201px) {
+  .personnel {
+    padding: 20px;
+  }
+
+  .personnel h2 {
+    font-size: 2.5em;
+  }
+
+  .personnel .person {
+    width: 80%;
+    max-width: none;
+  }
+
+  .personnel button {
+    padding: 10px 20px;
+  }
+}
