@@ -21,13 +21,15 @@
     "react-dom": "18.3.1",
     "react-native": "0.76.3",
     "react-native-paystack": "^3.4.0",
-    "react-native-paystack-webview": "^4.3.1",
+    "react-native-paystack-webview": "^4.6.6",
     "react-native-safe-area-context": "^4.14.0",
     "react-native-screens": "^4.3.0",
     "react-native-web": "~0.19.13"
   },
   "devDependencies": {
-    "@babel/core": "^7.20.0"
+    "@babel/core": "^7.20.0",
+    "metro-core": "^0.81.0",
+    "@react-native-community/cli": "latest"
   },
   "private": true
 }
